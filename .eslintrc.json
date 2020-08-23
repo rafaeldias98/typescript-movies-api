@@ -11,7 +11,19 @@
   ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "document": true,
+    "describe": true,
+    "it": true,
+    "test": true,
+    "expect": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "before": true,
+    "afterAll": true,
+    "afterEach": true,
+    "after": true,
+    "jest": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

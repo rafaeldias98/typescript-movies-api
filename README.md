@@ -23,12 +23,24 @@ $ npm run dev
 $ docker-compose up
 ```
 
+## :pushpin: Routes
+-   :heavy_exclamation_mark: IMPORTANT: All movies routes will be return [Movie entities](src/entity/Movie.ts).
+
+| Method |      Path     | Type of Return |
+|--------|:-------------:|---------------:|
+| GET    | /v1/movies/   | Movie[]        |
+
+## :skull: Run Tests
+#### Unit tests:
+```sh
+$ npm run test:unit
+```
+
 ## :floppy_disk: Backlog
 ### User Stories
--   [ ] User can see the abbreviated movie details in the list of movies
+-   [X] User can see all movies on a page
 -   [ ] User can see all movies ordered by their release date
 -   [ ] User can see any movie on a separate page
--   [ ] User can see all movie details on a separate page
 
 ### Bonus features
 -   [ ] User can create an account

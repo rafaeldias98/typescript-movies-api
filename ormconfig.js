@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   type: 'mysql',
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -7,8 +7,7 @@ export default {
   database: process.env.DB_NAME,
   synchronize: process.env.DB_SYNC === 'true',
   logging: false,
-  entities: ['dist/src/entity/*.js'],
-  migrations: ['src/migration/**/*.ts'],
+  entities: ['src/entity/**/*.ts'],
   cli: {
     entitiesDir: 'dist/src/entity',
   },
