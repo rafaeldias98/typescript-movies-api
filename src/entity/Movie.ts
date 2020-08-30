@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 export enum MovieStatus {
-  WillReleased = 'WILL_RELEASED',
+  WillReleased = 'WILL_RELEASE',
   Released = 'RELEASED',
   Inactive = 'INACTIVE',
 }
@@ -30,9 +30,15 @@ export class Movie {
   public description: string;
 
   @Column('enum', {
-    enum: ['WILL_RELEASED', 'RELEASED', 'INACTIVE'],
+    enum: ['WILL_RELEASE', 'RELEASED', 'INACTIVE'],
   })
   public status: string;
+
+  @Column({
+    name: 'release_date',
+    type: 'date',
+  })
+  public releaseDate: Date;
 
   @Column({
     length: 100,

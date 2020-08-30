@@ -23,6 +23,17 @@ $ npm run dev
 $ docker-compose up
 ```
 
+## :newspaper: API Documentation
+-   Create Documentation
+```sh
+$ npm run doc:create
+```
+
+-   Open Documentation
+```sh
+$ npm run doc:open
+```
+
 ## :pushpin: Routes
 -   :heavy_exclamation_mark: IMPORTANT: All movies routes will be return [Movie entities](src/entity/Movie.ts).
 
@@ -39,7 +50,7 @@ $ npm run test:unit
 ## :floppy_disk: Backlog
 ### User Stories
 -   [X] User can see all movies on a page
--   [ ] User can see all movies ordered by their release date
+-   [X] User can see all movies ordered by their release date
 -   [ ] User can see any movie on a separate page
 
 ### Bonus features
@@ -57,5 +68,5 @@ $ npm run test:unit
 
 If you find any problem or have a suggestion, please [open an issue](https://github.com/rafaeldias98/typescript-movies-api/issues/new).
 
-## Credits for the ideia
+## :bulb: Credits for the ideia
 -   [APP Ideas - MovieDB](https://github.com/florinpop17/app-ideas/blob/master/Projects/3-Advanced/Movie-App.md)
