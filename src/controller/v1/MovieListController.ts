@@ -11,18 +11,19 @@ import MovieServiceFactory from '../../service/v1/factory/MovieServiceFactory';
  * @apiParam (QueryParams) {String="releaseDate"} order_by Field of movies will be ordered.
  * @apiParam (QueryParams) {String="DESC","ASC"} order_type Type of movies order.
  *
- * @apiSuccess {Number} id Movie identifier.
- * @apiSuccess {String} name Movie name.
- * @apiSuccess {String} description Movie description.
- * @apiSuccess {String} status Movie status.
- * @apiSuccess {String} releaseDate Release date of movie.
- * @apiSuccess {String} authorName Name of author of the movie.
- * @apiSuccess {String} createdAt Movie creation date.
- * @apiSuccess {String} updatedAt Movie update date.
+ * @apiSuccess {Object[]} movies List of movie entities.
+ * @apiSuccess {Number} movies.id Movie identifier.
+ * @apiSuccess {String} movies.name Movie name.
+ * @apiSuccess {String} movies.description Movie description.
+ * @apiSuccess {String} movies.status Movie status.
+ * @apiSuccess {String} movies.releaseDate Release date of movie.
+ * @apiSuccess {String} movies.authorName Name of author of the movie.
+ * @apiSuccess {String} movies.createdAt Movie creation date.
+ * @apiSuccess {String} movies.updatedAt Movie update date.
  *
  * @apiError (ValidationError) {String} error 400 Bad Request.
  * @apiErrorExample {json} ValidationError example:
- *     HTTP/1.1 400 Bad Request
+ *     // HTTP 400 Bad Request
  *     {
  *       "error": "'order_type' must be one of [ASC, DESC]"
  *     }
