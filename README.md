@@ -37,9 +37,10 @@ $ npm run doc:open
 ## :pushpin: Routes
 -   :heavy_exclamation_mark: IMPORTANT: All movies routes will be return [Movie entities](src/entity/Movie.ts).
 
-| Method |      Path     | Type of Return |
-|--------|:-------------:|---------------:|
-| GET    | /v1/movies/   | Movie[]        |
+| Method |      Path      | Type of Return |
+|--------|:--------------:|---------------:|
+| GET    | /v1/movies/    | Movie[]        |
+| GET    | /v1/movies/:id | Movie          |
 
 ## :skull: Run Tests
 #### Unit tests:
@@ -51,7 +52,7 @@ $ npm run test:unit
 ### User Stories
 -   [X] User can see all movies on a page
 -   [X] User can see all movies ordered by their release date
--   [ ] User can see any movie on a separate page
+-   [X] User can see any movie on a separate page
 
 ### Bonus features
 -   [ ] User can create an account

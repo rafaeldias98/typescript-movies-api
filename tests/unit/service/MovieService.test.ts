@@ -5,6 +5,7 @@ import { Logger } from 'winston';
 import { ValidationError } from 'joi';
 import MovieService from '../../../src/service/v1/MovieService';
 import { Movie } from '../../../src/entity/Movie';
+import MovieNotFoundError from '../../../src/error/MovieNotFound';
 
 describe('Movie service', () => {
   describe('getAll method', () => {
@@ -33,6 +34,74 @@ describe('Movie service', () => {
 
       expect(await service.getAll(requestMock)).toEqual(moviesMock);
       expect(repositoryMock.find).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('getById method', () => {
+    test('should return a movie when valid and existent id is passed', async () => {
+      const movieMock = new Movie();
+
+      movieMock.id = 1;
+      movieMock.name = 'Unit Test';
+
+      const repositoryMock = Mock.of<Repository<Movie>>({
+        findOne: jest.fn().mockReturnValue(movieMock),
+      });
+
+      const loggerMock = Mock.of<Logger>({
+        info: jest.fn(),
+      });
+
+      const requestMock = Mock.of<Request>({
+        params: { id: '1' },
+      });
+
+      const service = new MovieService(repositoryMock, loggerMock);
+
+      expect(await service.getById(requestMock)).toEqual(movieMock);
+      expect(repositoryMock.findOne).toHaveBeenCalledTimes(1);
+    });
+
+    test('should throw a ValidationError when invalid id is passed', async () => {
+      const repositoryMock = Mock.of<Repository<Movie>>({
+        findOne: jest.fn().mockReturnValue({}),
+      });
+
+      const loggerMock = Mock.of<Logger>({
+        info: jest.fn(),
+      });
+
+      const requestMock = Mock.of<Request>({
+        params: { id: 'aaa' },
+      });
+
+      const service = new MovieService(repositoryMock, loggerMock);
+
+      await expect(async () => {
+        await service.getById(requestMock);
+      }).rejects.toEqual(
+        new ValidationError('"value" must be a number', {}, {}),
+      );
+    });
+
+    test('should throw a MovieNotFoundError when inexistent id is passed', async () => {
+      const repositoryMock = Mock.of<Repository<Movie>>({
+        findOne: jest.fn().mockReturnValue(undefined),
+      });
+
+      const loggerMock = Mock.of<Logger>({
+        info: jest.fn(),
+      });
+
+      const requestMock = Mock.of<Request>({
+        params: { id: '999' },
+      });
+
+      const service = new MovieService(repositoryMock, loggerMock);
+
+      await expect(async () => {
+        await service.getById(requestMock);
+      }).rejects.toEqual(new MovieNotFoundError(999));
     });
   });
 
@@ -73,7 +142,7 @@ describe('Movie service', () => {
       expect(loggerMock.info).toHaveBeenCalledTimes(1);
     });
 
-    test('should throw a ValidationException when invalid queryParams is passed', async () => {
+    test('should throw a ValidationError when invalid queryParams is passed', async () => {
       const repositoryMock = Mock.of<Repository<Movie>>({
         find: jest.fn().mockReturnValue([]),
       });
