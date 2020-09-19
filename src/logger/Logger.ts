@@ -1,15 +1,5 @@
-import { Logger, format, createLogger, transports } from 'winston';
+import * as pino from 'pino';
 
-const { combine, json, timestamp } = format;
-
-export default function getLogger(): Logger {
-  return createLogger({
-    format: combine(timestamp(), json()),
-    transports: [new transports.Console()],
-    defaultMeta: {
-      service: {
-        name: 'movies_api',
-      },
-    },
-  });
+export default function getLogger(): pino.Logger {
+  return pino({ messageKey: 'message' });
 }

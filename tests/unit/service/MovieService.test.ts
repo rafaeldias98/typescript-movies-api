@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { Mock } from 'ts-mockery';
 import { Repository } from 'typeorm';
-import { Logger } from 'winston';
+import { Logger } from 'pino';
 import { ValidationError } from 'joi';
 import MovieService from '../../../src/service/v1/MovieService';
 import { Movie } from '../../../src/entity/Movie';
