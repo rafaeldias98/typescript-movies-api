@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { Repository } from 'typeorm';
-import { Logger } from 'winston';
+import { Logger } from 'pino';
 import { Movie } from '../../entity/Movie';
 import MovieNotFoundError from '../../error/MovieNotFound';
 import getAllMoviesQueryParamsSchema from '../../schemas/getAllMoviesQueryParams';
