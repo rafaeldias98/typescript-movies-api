@@ -10,7 +10,6 @@ services:
       - storage
     volumes:
       - ./:/app
-      - ./node_modules:/app/node_modules
     entrypoint:
       - ./scripts/docker-entrypoint.sh
     env_file: .env
